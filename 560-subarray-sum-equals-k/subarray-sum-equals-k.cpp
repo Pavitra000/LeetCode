@@ -10,7 +10,7 @@ public:
             if(prefix.find(sumi-k) != prefix.end()){ans = ans+prefix[sumi-k];}
             if(prefix.find(sumi) != prefix.end()){prefix[sumi]++;}
             else if(prefix.find(sumi) == prefix.end()){prefix[sumi] = 1;}
-            if(sumi == k){ans++;continue;}
+            if(sumi == k){ans++;}
         }
         return ans;
     }
