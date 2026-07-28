@@ -9,12 +9,14 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        unordered_map<ListNode* ,int> mapp;
-        while(head!=NULL){
-            if(mapp.find(head)==mapp.end()){mapp[head]=1;}
-            else if(mapp.find(head)!=mapp.end()){return true;}
-            head = head->next;
-        }
-        return false;
+        ListNode* rabbit = head;
+        ListNode* tortoise = head;
+        if(head==NULL || head->next==NULL){return false;}
+        if(head->next->next==NULL){return false;}
+        while(rabbit!=NULL && rabbit->next!=NULL){
+            rabbit = rabbit->next->next;
+            tortoise = tortoise->next;
+            if(rabbit == tortoise){return true;}
+        }return false;
     }
 };
