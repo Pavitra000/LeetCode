@@ -15,7 +15,6 @@ public:
         if(head==NULL){return head;}
         if(head->next==NULL && n==1){return null;}
         if(head->next->next==NULL && n==1){head->next=NULL; return head;}
-        if(head->next->next==NULL && n==2){head=head->next; return head;}
         ListNode* check = head;
         int length = 0;
         while(check!=NULL){check = check->next; length++;}
