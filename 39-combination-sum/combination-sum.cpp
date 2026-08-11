@@ -2,7 +2,7 @@ class Solution {
 public:
     void solve(vector<int> &candidates, int target, int i, int sumi, vector<int> &tempAns, vector<vector<int>> &ans){
         if(i>=candidates.size() || sumi > target){return;}
-        if(sumi == target){ans.push_back(tempAns); sumi = 0; return;}
+        if(sumi == target){ans.push_back(tempAns);return;}
 
         sumi = sumi+candidates[i];
         tempAns.push_back(candidates[i]);
