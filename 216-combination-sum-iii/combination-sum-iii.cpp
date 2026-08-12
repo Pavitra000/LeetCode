@@ -2,7 +2,7 @@ class Solution {
 public:
     void solve(int i, int n, int sumi, int k, vector<int> &nums,vector<vector<int>> &ans, vector<int> &temp){
         if(sumi==n && temp.size()==k){ans.push_back(temp);return;}
-        if(i>=nums.size()){return;}
+        if(i>=nums.size() || temp.size()>k){return;}
 
         sumi = sumi+nums[i];
         temp.push_back(nums[i]);
@@ -14,7 +14,7 @@ public:
 
         return;
     }
-    
+
     vector<vector<int>> combinationSum3(int k, int n) {
         vector<int> nums = {1,2,3,4,5,6,7,8,9};
         vector<vector<int>> ans;
