@@ -9,14 +9,19 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        ListNode* rabbit = head;
+        ListNode* hare = head;
         ListNode* tortoise = head;
-        if(head==NULL || head->next==NULL){return false;}
-        if(head->next->next==NULL){return false;}
-        while(rabbit!=NULL && rabbit->next!=NULL){
-            rabbit = rabbit->next->next;
+
+        ListNode* check = head;
+        if(check==NULL || check->next==NULL || check->next->next==NULL){return false;}
+        while(1){
+            hare = hare->next->next;
             tortoise = tortoise->next;
-            if(rabbit == tortoise){return true;}
-        }return false;
+
+            if(hare == tortoise){return true;}
+
+            if(hare==NULL){return false;}
+            if(hare->next==NULL){return false;}
+        }
     }
 };
