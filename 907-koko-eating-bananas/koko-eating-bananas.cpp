@@ -19,8 +19,9 @@ public:
         int ans = INT_MAX;
         while(low<=high){
             mid = (low+high)/2;
-            if(func(piles, mid)>h){low = mid+1;}
-            else if(func(piles, mid)<=h){ans = min(ans, mid); high = mid-1;}
+            long long funcans = func(piles, mid);
+            if(funcans>h){low = mid+1;}
+            else if(funcans<=h){ans = min(ans, mid); high = mid-1;}
         }
         return ans;
     }
