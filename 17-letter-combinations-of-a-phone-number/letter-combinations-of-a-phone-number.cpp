@@ -1,30 +1,33 @@
+
 class Solution {
 public:
-    void solve(int i, vector<string> &ans, string &temp, unordered_map<char, vector<char>> hashmap, string digits){
-        if(i>=digits.length()){ans.push_back(temp); return;}
 
-        for(auto it: hashmap[digits[i]]){
-            temp = temp+it;
-            solve(i+1, ans, temp, hashmap, digits);
-            temp.pop_back();
+    void solve(string digits, string output, int index, vector<string> &ans, vector<string> mapping){
+        if(index>=digits.length()){ans.push_back(output); return;}
+        int num = digits[index] - '0';
+
+        string value = mapping[num];
+
+        for(int i=0; i<value.length(); i++){
+            output.push_back(value[i]);
+            solve(digits, output, index+1, ans, mapping);
+            output.pop_back();
         }
+
     }
+
     vector<string> letterCombinations(string digits) {
-        unordered_map<char, vector<char>> hashmap = {
-            {'2', {'a','b','c'}},
-            {'3', {'d','e','f'}},
-            {'4', {'g','h','i'}},
-            {'5', {'j','k','l'}},
-            {'6', {'m','n','o'}},
-            {'7', {'p','q','r','s'}},
-            {'8', {'t','u','v'}},
-            {'9', {'w','x','y','z'}}
+        vector<string> mapping = {
+            "", "", "abc", "def", "ghi",
+            "jkl", "mno", "pqrs", "tuv", "wxyz"
         };
 
-        string temp = "";
         vector<string> ans;
+        string output;
+        int index = 0;
+        
+        solve(digits,output,index,ans,mapping);
 
-        solve(0, ans, temp, hashmap, digits);
         return ans;
     }
 };
