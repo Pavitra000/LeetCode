@@ -10,10 +10,9 @@ public:
             int ans = solve(coins, amount-coins[i], dp);
 
             if(ans!=INT_MAX){mini = min(mini, ans+1);}
-            dp[amount] = mini;
         }
         
-        // dp[amount] = mini;
+        dp[amount] = mini;
         return mini;
     }
 
