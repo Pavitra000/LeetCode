@@ -1,13 +1,11 @@
 class Solution {
 public:
     void dfs(vector<vector<int>> &adjList, int i, vector<int> &visited){
-        if(visited[i]==0){
-            visited[i]=1;
+        visited[i]=1;
 
-            for(auto next: adjList[i]){
-                if(visited[next]==0){
-                    dfs(adjList, next, visited);
-                }
+        for(auto next: adjList[i]){
+            if(visited[next]==0){
+                dfs(adjList, next, visited);
             }
         }
     }
